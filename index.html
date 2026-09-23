@@ -189,7 +189,7 @@ body {
 /* ── THUMBNAIL ───────────────────────────────────────────────── */
 .thumb {
   position: relative;
-  width: 100%; aspect-ratio: 3/4;
+  width: 100%; aspect-ratio: 11/15;
   background: var(--surface2);
   overflow: hidden;
   display: flex; align-items: center; justify-content: center;
@@ -263,22 +263,25 @@ body {
 .pages-list { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
 
 /* ── PRINT MEDIA ─────────────────────────────────────────────── */
+@page { size: 11in 15in; margin: 0; }
+
 @media print {
   * { visibility: hidden !important; }
   #print-area, #print-area * { visibility: visible !important; }
   #print-area {
     position: fixed !important; top: 0 !important; left: 0 !important;
-    width: 100% !important; height: 100% !important; display: block !important;
+    width: 11in !important; height: 15in !important; display: block !important;
   }
   .print-page {
     page-break-after: always;
-    width: 100vw; height: 100vh;
+    width: 11in; height: 15in;
     display: flex !important;
     align-items: center; justify-content: center;
     margin: 0; padding: 0;
+    overflow: hidden;
   }
   .print-page:last-child { page-break-after: avoid; }
-  .print-page img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .print-page img { width: 11in; height: 15in; object-fit: fill; display: block; }
 }
 
 #print-area { display: none; }
@@ -289,7 +292,7 @@ body {
 <!-- ── HEADER ──────────────────────────────────────────────── -->
 <div class="header">
   <div class="header-left">
-    <div class="header-title">🎄 Print Selector APP</div>
+    <div class="header-title">Print Selector APP</div>
     <div class="header-sub">4 Varieties &times; 12 Pages</div>
   </div>
   <label class="btn btn-primary" style="cursor:pointer" title="Load images for the currently active tab">
